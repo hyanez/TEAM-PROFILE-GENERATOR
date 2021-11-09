@@ -1,4 +1,4 @@
-const Engineer = require("../lib/Engineer");
+const Engineer = require("../lib/Engineer.js");
 
 describe("Engineer", () => {
   it("Should initialize github username with passed argument from constructor", () => {
