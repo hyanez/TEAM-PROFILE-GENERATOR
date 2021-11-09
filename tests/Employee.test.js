@@ -27,7 +27,7 @@ describe("Employee", () => {
     });
   });
   describe("getRole", () => {
-    it("Should return a role string", () => {
+    it("Should return the role of the employee as a string", () => {
       const position = "Employee";
       const employee = new Employee("Hugo", 10, "sample@gmail.com", position);
       expect(employee.getRole()).toBe(position);
