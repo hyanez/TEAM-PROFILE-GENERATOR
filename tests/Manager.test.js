@@ -9,7 +9,7 @@ describe("Manager", () => {
   describe("getRole", () => {
     it("Should return the role of the employee as a string", () => {
       const position = "Manager";
-      const manager = new Manager(position);
+      const manager = new Manager("Hugo", 10, "sample@gmail.com", "103B");
       expect(manager.getRole()).toBe(position);
     });
   });
