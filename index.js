@@ -207,3 +207,9 @@ function addClosingTags() {
   console.log("Closing tags for the HTML tags have been generated");
 }
 // INITIALIZATION
+function init() {
+  addOpeningHTML();
+  askEmployeeInfo();
+}
+
+init();
