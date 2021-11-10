@@ -10,7 +10,7 @@ describe("Intern", () => {
     it("Should return the school name of the employee as a string", () => {
       const schoolName = "Fordham";
       const intern = new Intern("Hugo", 10, "sample@gmail.com", schoolName);
-      expect(intern.getGithub()).toBe(schoolName);
+      expect(intern.getSchool()).toBe(schoolName);
     });
   });
   describe("getRole", () => {
