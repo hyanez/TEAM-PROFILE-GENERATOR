@@ -108,7 +108,92 @@ function addEmployeeCard(employee) {
   });
 }
 
-function askEmployeeInfo() {}
+function askEmployeeInfo() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "Enter employee's name: ",
+        name: "employeeName",
+      },
+      {
+        type: "input",
+        message: "Enter employee's ID: ",
+        name: "employeeID",
+      },
+      {
+        type: "input",
+        message: "Enter employee's email: ",
+        name: "employeeEmail",
+      },
+      {
+        type: "list",
+        message: "Select employee's position: ",
+        choices: ["Manager", "Engineer", "Intern"],
+        name: "employeeRole",
+      },
+    ])
+    .then(function ({ employeeName, employeeID, employeeEmail, employeeRole }) {
+      let moreInfo = "";
+
+      if (employeeRole === "Engineer") {
+        moreInfo = "Github Username";
+      } else if (employeeRole === "Manager") {
+        moreInfo = "Office Number";
+      } else if (employeeRole === "Intern") {
+        moreInfo = "School";
+      }
+
+      inquirer
+        .prompt([
+          {
+            type: "input",
+            message: `Enter your employee's ${moreInfo}: `,
+            name: "employeeInfo",
+          },
+          {
+            type: "list",
+            message: "Want to add anymore employees?",
+            choices: ["Yes", "No"],
+            name: "anotherEmployee",
+          },
+        ])
+        .then(function ({ employeeInfo, anotherEmployee }) {
+          let newEmployee;
+          if (moreInfo === "Github Username") {
+            newEmployee = new Engineer(
+              employeeName,
+              employeeID,
+              employeeEmail,
+              employeeRole
+            );
+          } else if (moreInfo === "Office Number") {
+            newEmployee = new Manager(
+              employeeName,
+              employeeID,
+              employeeEmail,
+              employeeRole
+            );
+          } else if (moreInfo === "School") {
+            newEmployee = new Intern(
+              employeeName,
+              employeeID,
+              employeeEmail,
+              employeeRole
+            );
+          }
+
+          employeeArray.push(newEmployee);
+          addEmployeeCard(newEmployee);
+
+          if (anotherEmployee === "Yes") {
+            askEmployeeInfo();
+          } else if (anotherEmployee === "No") {
+            addClosingTags();
+          }
+        });
+    });
+}
 
 //Function that appends closing tags using template literals to the end of the html file
 function addClosingTags() {
