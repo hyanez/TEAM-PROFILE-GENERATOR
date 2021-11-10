@@ -51,9 +51,64 @@ function addOpeningHTML() {
   console.log("The beginning of your file has been generated!");
 }
 
-function addEmployee(employee) {
-  return new Promise(function (resolve, reject) {});
+function addEmployeeCard(employee) {
+  return new Promise(function (resolve, reject) {
+    const name = employee.getName();
+    const id = employee.getId();
+    const email = employee.getEmail();
+    const role = employee.getRole();
+    let info = "";
+    if (role === "Engineer") {
+      const username = employee.getGithub();
+      info = `<div class="card" style="width: 18rem">
+        <div class="card-body" style="background-color: blue; color: white">
+          <h4 class="card-title">${name}</h4>
+          <h5 class="card-title">${role}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">ID: ${id}</li>
+          <li class="list-group-item">Email: ${email}</li>
+          <li class="list-group-item">GitHub Username: ${username}</li>
+        </ul>
+      </div>`;
+    } else if (role === "Manager") {
+      const officeNumber = employee.getOfficeNumber();
+      info = `<div class="card" style="width: 18rem">
+        <div class="card-body" style="background-color: blue; color: white">
+          <h4 class="card-title">${name}</h4>
+          <h5 class="card-title">${role}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">ID: ${id}</li>
+          <li class="list-group-item">Email: ${email}</li>
+          <li class="list-group-item">Office Number: ${officeNumber}</li>
+        </ul>
+      </div>`;
+    } else if (role === "Intern") {
+      const school = employee.getSchool();
+      info = `<div class="card" style="width: 18rem">
+        <div class="card-body" style="background-color: blue; color: white">
+          <h4 class="card-title">${name}</h4>
+          <h5 class="card-title">${role}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">ID: ${id}</li>
+          <li class="list-group-item">Email: ${email}</li>
+          <li class="list-group-item">School: ${school}</li>
+        </ul>
+      </div>`;
+    }
+
+    fs.appendFile("./dist/generatedHTML.html", info, function (err) {
+      if (err) {
+        return reject(err);
+      }
+      return resolve();
+    });
+  });
 }
+
+function askEmployeeInfo() {}
 
 //Function that appends closing tags using template literals to the end of the html file
 function addClosingTags() {
