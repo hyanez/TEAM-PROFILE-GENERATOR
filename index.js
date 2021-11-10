@@ -41,7 +41,11 @@ function addOpeningHTML() {
         <div class="container">
           <h1 class="display-4" style="text-align: center">My Team</h1>
         </div>
-      </div>`;
+      </div>
+      <div
+      class="main-container"
+      style="display: flex; justify-content: space-evenly; align-items: center"
+    >`;
 
   fs.writeFile("./dist/generatedHTML.html", openingHTML, function (err) {
     if (err) {
@@ -60,7 +64,8 @@ function addEmployeeCard(employee) {
     let info = "";
     if (role === "Engineer") {
       const username = employee.getGithub();
-      info = `<div class="card" style="width: 18rem">
+      info = `<!-- Engineer Card -->
+      <div class="card" style="width: 18rem">
         <div class="card-body" style="background-color: blue; color: white">
           <h4 class="card-title">${name}</h4>
           <h5 class="card-title">${role}</h5>
@@ -73,7 +78,8 @@ function addEmployeeCard(employee) {
       </div>`;
     } else if (role === "Manager") {
       const officeNumber = employee.getOfficeNumber();
-      info = `<div class="card" style="width: 18rem">
+      info = `<!-- Manager Card -->
+      <div class="card" style="width: 18rem">
         <div class="card-body" style="background-color: blue; color: white">
           <h4 class="card-title">${name}</h4>
           <h5 class="card-title">${role}</h5>
@@ -86,7 +92,8 @@ function addEmployeeCard(employee) {
       </div>`;
     } else if (role === "Intern") {
       const school = employee.getSchool();
-      info = `<div class="card" style="width: 18rem">
+      info = `<!-- Intern Card -->
+      <div class="card" style="width: 18rem">
         <div class="card-body" style="background-color: blue; color: white">
           <h4 class="card-title">${name}</h4>
           <h5 class="card-title">${role}</h5>
@@ -165,21 +172,21 @@ function askEmployeeInfo() {
               employeeName,
               employeeID,
               employeeEmail,
-              employeeRole
+              employeeInfo
             );
           } else if (moreInfo === "Office Number") {
             newEmployee = new Manager(
               employeeName,
               employeeID,
               employeeEmail,
-              employeeRole
+              employeeInfo
             );
           } else if (moreInfo === "School") {
             newEmployee = new Intern(
               employeeName,
               employeeID,
               employeeEmail,
-              employeeRole
+              employeeInfo
             );
           }
 
@@ -197,9 +204,10 @@ function askEmployeeInfo() {
 
 //Function that appends closing tags using template literals to the end of the html file
 function addClosingTags() {
-  const closingTags = `</body>
+  const closingTags = `</div>
+  </body>
     </html>`;
-  fs.appendFile("./dis/generatedHTML.html", closingTags, function (err) {
+  fs.appendFile("./dist/generatedHTML.html", closingTags, function (err) {
     if (err) {
       console.log(err);
     }

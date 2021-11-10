@@ -24,21 +24,30 @@
         color: white;
       "
     >
-      <div class="container">
-        <h1 class="display-4" style="text-align: center">My Team</h1>
+      <div
+        class="main-container"
+        style="
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+        "
+      >
+        <div class="container">
+          <h1 class="display-4" style="text-align: center">My Team</h1>
+        </div>
       </div>
-    </div>
-    <!-- employeeCard -->
-    <div class="card" style="width: 18rem">
-      <div class="card-body" style="background-color: blue; color: white">
-        <h4 class="card-title">Employee Name</h4>
-        <h5 class="card-title">Position</h5>
+      <!-- employeeCard -->
+      <div class="card" style="width: 18rem">
+        <div class="card-body" style="background-color: blue; color: white">
+          <h4 class="card-title">Employee Name</h4>
+          <h5 class="card-title">Position</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">ID:</li>
+          <li class="list-group-item">Email:</li>
+          <li class="list-group-item">Other Info:</li>
+        </ul>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID:</li>
-        <li class="list-group-item">Email:</li>
-        <li class="list-group-item">Other Info:</li>
-      </ul>
     </div>
   </body>
 </html>
