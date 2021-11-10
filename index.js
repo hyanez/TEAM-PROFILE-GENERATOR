@@ -10,9 +10,10 @@ const Intern = require("./lib/Intern");
 const employeeArray = [];
 
 // FUNCTIONS
+//Function that creates the opening HTML content, including the heading
 function addOpeningHTML() {
   const openingHTML = `<!DOCTYPE html>
-    <html lang="en">
+  <html lang="en">
     <head>
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -26,35 +27,32 @@ function addOpeningHTML() {
       <title>Team Profile Generator</title>
     </head>
     <body>
-
-    <div class="jumbotron jumbotron-fluid" style = "display:flex; justify-content: space-evenly; align-items: center; background-color: red; color: white;">
-    <div class="container">
-      <h1 class="display-4">My Team</h1>
-    </div>
-  </div>
-
-
-    <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-
-    <div class="staffCard" style = "display:flex; justify-content: space-evenly;
-    align-items: center;">
-      <div class="jumbotron jumbotron-fluid">
+      <!-- Heading -->
+      <div
+        class="jumbotron jumbotron-fluid"
+        style="
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          background-color: red;
+          color: white;
+        "
+      >
         <div class="container">
-          <h1 class="display-4">My Team</h1>
-          <p class="lead">
-            To add members, please refer to the JavaScript application associated
-            with this repository.
-          </p>
+          <h1 class="display-4" style="text-align: center">My Team</h1>
         </div>
       </div>`;
+
+  fs.writeFile("./dist/generatedHTML.html", openingHTML, function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+  console.log("The beginning of your file has been generated!");
+}
+
+function addEmployee(employee) {
+  return new Promise(function (resolve, reject) {});
 }
 
 //Function that appends closing tags using template literals to the end of the html file
