@@ -22,3 +22,4 @@ The following image shows a mock-up of the generated HTML’s appearance and fun
 
 - [Deployed Link](https://hyanez.github.io/TEAM-PROFILE-GENERATOR/)
 - [Github Link](https://github.com/hyanez/TEAM-PROFILE-GENERATOR)
+- [Link to Video Demonstration](https://watch.screencastify.com/v/dxQfH0Nml39GM7PzMZLF)
